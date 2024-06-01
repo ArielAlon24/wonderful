@@ -1,5 +1,7 @@
 venv/
 mp3s/
+mp4s/
+srts/
 **/__pycache__
 .DS_Store
 wonderful.zxp

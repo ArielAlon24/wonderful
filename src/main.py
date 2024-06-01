@@ -1,20 +1,20 @@
-from typing import AsyncGenerator, Tuple
 from fastapi import FastAPI, UploadFile, HTTPException, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from starlette.background import BackgroundTask
-from uuid import uuid4
-from asyncio import Queue
 from contextlib import asynccontextmanager
+from whisper import utils, load_model
+from asyncio import Queue
+from uuid import uuid4
 import asyncio
-import os
 import aiofiles
-import whisper
-from whisper import utils
+import logging
+import os
+
+from typing import AsyncGenerator, Tuple
 
 from .task import Task, TaskState
 from .async_dict import AsyncDict
 
-import logging
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -39,7 +39,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-model = whisper.load_model("base")
+model = load_model("base")
 
 queue = Queue()
 tasks: AsyncDict[str, Task] = AsyncDict()

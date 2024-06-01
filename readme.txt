@@ -22,6 +22,6 @@ https://fastapi.tiangolo.com/tutorial/request-files/
 
 This work made me dig up the whisper api, which to my suprise already included a writer for .srt files.
 
-It's time for the server - as the assigment said, I used FastAPI with two routes, one for uploading a file for transcription and for getting the result,
+It's time for the server - as the assigment said, I used FastAPI with two routes, one for uploading a file for transcription and for getting the result (as an .srt). This was possible by mainting a task queue and dictionary both async.
 
 
